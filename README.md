@@ -1,20 +1,67 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/sivakarthikayan-cs/circle_blast_transition/developer/example/assets/circle_blast_transition_radial_center.gif" width="160" alt="circle blast logo"/>
+
 # circle_blast_transition
 
-A Flutter page transition that reveals the incoming screen through an animated
-grid of expanding circles — like a "blast" that assembles the new page from
-small dots. Pure Flutter, zero dependencies, optimised for low-spec devices.
+**A Flutter page transition that reveals screens through an animated grid of expanding circles.**  
+Pure Flutter · Zero dependencies · Low-spec device friendly
+
+[![pub version](https://img.shields.io/pub/v/circle_blast_transition.svg)](https://pub.dev/packages/circle_blast_transition)
+[![pub points](https://img.shields.io/pub/points/circle_blast_transition)](https://pub.dev/packages/circle_blast_transition/score)
+[![license](https://img.shields.io/github/license/sivakarthikayan-cs/circle_blast_transition)](LICENSE)
+[![platform](https://img.shields.io/badge/platform-flutter-blue)](https://flutter.dev)
+
+</div>
 
 ---
 
-## Preview
+## ✨ Preview
 
-```
-[ Home Screen ]  ──navigate──►  small circles pop in  ──►  [ Next Screen ]
-```
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/sivakarthikayan-cs/circle_blast_transition/developer/example/assets/circle_blast_transition_radial_center.gif"
+           width="180" alt="Radial Center" />
+      <br/>
+      <b>Radial Center</b>
+      <br/>
+      <sub>Circles explode from the centre outward</sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/sivakarthikayan-cs/circle_blast_transition/developer/example/assets/circle_blast_transition_random.gif"
+           width="180" alt="Random" />
+      <br/>
+      <b>Random</b>
+      <br/>
+      <sub>Circles pop in a scattered random order</sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/sivakarthikayan-cs/circle_blast_transition/developer/example/assets/circle_blast_transition_diagonal.gif"
+           width="180" alt="Diagonal" />
+      <br/>
+      <b>Diagonal</b>
+      <br/>
+      <sub>Wave sweeps top-left → bottom-right</sub>
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/sivakarthikayan-cs/circle_blast_transition/developer/example/assets/circle_blast_transition_top-bottom.gif"
+           width="180" alt="Top to Bottom" />
+      <br/>
+      <b>Top → Bottom</b>
+      <br/>
+      <sub>Circles sweep row by row downward</sub>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ---
 
-## Installation
+## 📦 Installation
 
 Add to your `pubspec.yaml`:
 
@@ -31,50 +78,66 @@ flutter pub get
 
 ---
 
-## Usage
-
-### Minimal
+## 🚀 Quick Start
 
 ```dart
 import 'package:circle_blast_transition/circle_blast_transition.dart';
 
 Navigator.push(
   context,
-  CircleBlastRoute(page: const MyNextScreen()),
+  CircleBlastRoute(
+    page: const MyNextScreen(),
+  ),
 );
 ```
 
-### All options
+---
+
+## 🎨 Blast Styles
+
+| Style | Preview | Description |
+|---|---|---|
+| `BlastStyle.radialCenter` | 🔵 | Circles expand outward from the screen centre |
+| `BlastStyle.random` | 🎲 | Circles appear in a stable random order |
+| `BlastStyle.topToBottom` | ⬇️ | Sweeps row by row from top to bottom |
+| `BlastStyle.diagonal` | ↘️ | Diagonal wave from top-left to bottom-right |
 
 ```dart
 Navigator.push(
   context,
   CircleBlastRoute(
     page: const MyNextScreen(),
-
-    // How the circles appear (default: radialCenter)
-    style: BlastStyle.diagonal,
-
-    // Grid density — lower = better on weak devices (defaults: 9 × 16)
-    cols: 7,
-    rows: 12,
-
-    // Animation duration (default: 750 ms)
-    duration: const Duration(milliseconds: 600),
-
-    // Pop duration (defaults to duration)
-    reverseDuration: const Duration(milliseconds: 400),
+    style: BlastStyle.diagonal,       // pick your style
+    cols: 9,                          // grid columns
+    rows: 16,                         // grid rows
+    duration: const Duration(milliseconds: 750),
   ),
 );
 ```
 
-### Using CircleBlastTransition directly
+---
 
-If you manage your own route or controller, use the widget directly:
+## 🛠️ API Reference
+
+### `CircleBlastRoute`
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `page` | `Widget` | **required** | Destination screen |
+| `style` | `BlastStyle` | `radialCenter` | Circle reveal order |
+| `cols` | `int` | `9` | Grid columns |
+| `rows` | `int` | `16` | Grid rows |
+| `duration` | `Duration` | `750ms` | Forward transition duration |
+| `reverseDuration` | `Duration?` | same as `duration` | Reverse (pop) transition duration |
+| `settings` | `RouteSettings?` | `null` | Passed to `PageRouteBuilder` |
+
+### `CircleBlastTransition` (standalone widget)
+
+Use this if you manage your own `AnimationController`:
 
 ```dart
 CircleBlastTransition(
-  animation: myAnimationController,   // 0 → 1
+  animation: myController,   // Animation<double> 0 → 1
   style: BlastStyle.random,
   cols: 8,
   rows: 14,
@@ -84,57 +147,54 @@ CircleBlastTransition(
 
 ---
 
-## Blast styles
+## ⚡ Low-Spec Device Tips
 
-| Value | Effect |
-|---|---|
-| `BlastStyle.radialCenter` | Circles explode outward from the screen centre |
-| `BlastStyle.random` | Circles appear in a stable random order |
-| `BlastStyle.topToBottom` | Sweeps row-by-row from top to bottom |
-| `BlastStyle.diagonal` | Diagonal wave from top-left to bottom-right |
-
----
-
-## Performance tips for low-spec devices
+This transition uses a `ClipPath` mask — the incoming page is rendered once and only the clip shape changes per frame. No snapshots, no extra layers.
 
 | Setting | Recommendation |
 |---|---|
-| `cols` / `rows` | Start with `6 × 10`; increase only if the device handles it |
-| `duration` | `500 ms` is visually smooth and leaves less GPU time per frame |
-| Curve | Internally uses `Curves.easeInOut` + a pop curve — no extra config needed |
-
-The transition uses a **`ClipPath`** mask — the new page is rendered once and
-the clip shape changes every frame. This avoids snapshot layers and is the
-cheapest GPU approach for this kind of reveal.
+| `cols` / `rows` | Use `6 × 10` on weak devices |
+| `duration` | `500ms` reduces total frames rendered |
+| Style | All 4 styles have identical GPU cost |
 
 ---
 
-## API reference
+## 📁 Example App
 
-### `CircleBlastRoute<T>`
+A full interactive demo is included in the [`example/`](example/) folder.  
+It lets you switch between all 4 styles and adjust the grid density live.
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `page` | `Widget` | — | Destination screen (required) |
-| `style` | `BlastStyle` | `radialCenter` | Circle reveal order |
-| `cols` | `int` | `9` | Grid columns |
-| `rows` | `int` | `16` | Grid rows |
-| `duration` | `Duration` | `750 ms` | Forward animation duration |
-| `reverseDuration` | `Duration?` | same as `duration` | Reverse animation duration |
-| `settings` | `RouteSettings?` | `null` | Passed to `PageRouteBuilder` |
-
-### `CircleBlastTransition`
-
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `animation` | `Animation<double>` | — | 0→1 driver (required) |
-| `child` | `Widget` | — | Page being revealed (required) |
-| `style` | `BlastStyle` | `radialCenter` | Circle reveal order |
-| `cols` | `int` | `9` | Grid columns |
-| `rows` | `int` | `16` | Grid rows |
+```sh
+cd example
+flutter run
+```
 
 ---
 
-## License
+## 🤝 Contributing
 
-MIT © 2026
+Contributions are welcome!
+
+1. Fork the repo
+2. Create your branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m 'Add my feature'`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
+
+Please open an [issue](https://github.com/sivakarthikayan-cs/circle_blast_transition/issues) first for major changes.
+
+---
+
+## 📄 License
+
+MIT © 2026 [Sivakarthikayan](https://github.com/sivakarthikayan-cs)
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+If you find this package useful, please ⭐ the repo and 👍 it on [pub.dev](https://pub.dev/packages/circle_blast_transition)!
+
+</div>
