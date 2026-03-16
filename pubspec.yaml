@@ -1,9 +1,6 @@
 name: circle_blast_transition
 description: >
-    Flutter page transition animation with circle blast effect. Animated route
-    navigation that reveals screens through an expanding grid of circles.
-    Custom page route, screen transition, navigation animation — pure Flutter,
-    no dependencies, optimised for low-spec devices.
+  Flutter page transition animation — circles blast and assemble to reveal the next screen. Pure Flutter, zero dependencies.
 version: 0.1.0
 homepage: https://github.com/sivakarthikayan-cs/circle_blast_transition
 
