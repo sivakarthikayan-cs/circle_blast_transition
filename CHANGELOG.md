@@ -1,3 +1,11 @@
+
+## 0.1.2
+* Added `leftToRight` option to `BlastStyle` enum and implemented its staggering logic in `CircleBlastTransition`.
+* Added repository, issue tracker, and documentation metadata to `pubspec.yaml`.
+
+## 0.1.1
+* Added license and screenshot metadata to `pubspec.yaml`.
+
 ## 0.1.0
 
 * Initial release.

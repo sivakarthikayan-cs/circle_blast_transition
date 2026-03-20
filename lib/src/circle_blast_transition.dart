@@ -128,6 +128,10 @@ class _CircleBlastClipper extends CustomClipper<Path> {
         final maxSum = (cols - 1) + (rows - 1);
         if (maxSum == 0) return 0;
         return ((col + row) / maxSum) * _kMaxStagger;
+
+      case BlastStyle.leftToRight:
+        if (cols <= 1) return 0;
+        return (col / (cols - 1)) * _kMaxStagger;
     }
   }
 

@@ -1,9 +1,13 @@
 name: circle_blast_transition
 description: >
   Flutter page transition animation — circles blast and assemble to reveal the next screen. Pure Flutter, zero dependencies.
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/sivakarthikayan-cs/circle_blast_transition
 license: MIT
+animation_type: page_transition
+repository: https://github.com/sivakarthikayan-cs/circle_blast_transition
+issue_tracker: https://github.com/sivakarthikayan-cs/circle_blast_transition/issues
+documentation: https://pub.dev/documentation/circle_blast_transition/latest/
 
 screenshots:
   - description: Circle blast page transition effect
@@ -19,8 +23,8 @@ dependencies:
 
 
 dev_dependencies:
+  flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
 
 flutter:

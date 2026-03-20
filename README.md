@@ -67,7 +67,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  circle_blast_transition: ^0.1.0
+  circle_blast_transition: ^0.1.2
 ```
 
 Then run:
