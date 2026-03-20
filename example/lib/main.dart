@@ -167,6 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
         BlastStyle.random => '🎲 Random',
         BlastStyle.topToBottom => '⬇️ Top→Bottom',
         BlastStyle.diagonal => '↘️ Diagonal',
+        BlastStyle.leftToRight => '➡️ Left→Right',
       };
 }
 

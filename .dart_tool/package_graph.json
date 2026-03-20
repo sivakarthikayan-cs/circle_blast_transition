@@ -5,20 +5,13 @@
   "packages": [
     {
       "name": "circle_blast_transition",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "dependencies": [
         "flutter"
       ],
       "devDependencies": [
         "flutter_lints",
         "flutter_test"
-      ]
-    },
-    {
-      "name": "flutter_lints",
-      "version": "3.0.2",
-      "dependencies": [
-        "lints"
       ]
     },
     {
@@ -40,6 +33,13 @@
       ]
     },
     {
+      "name": "flutter_lints",
+      "version": "3.0.2",
+      "dependencies": [
+        "lints"
+      ]
+    },
+    {
       "name": "flutter",
       "version": "0.0.0",
       "dependencies": [
@@ -50,11 +50,6 @@
         "sky_engine",
         "vector_math"
       ]
-    },
-    {
-      "name": "lints",
-      "version": "3.0.0",
-      "dependencies": []
     },
     {
       "name": "stream_channel",
@@ -139,6 +134,11 @@
         "string_scanner",
         "term_glyph"
       ]
+    },
+    {
+      "name": "lints",
+      "version": "3.0.0",
+      "dependencies": []
     },
     {
       "name": "sky_engine",

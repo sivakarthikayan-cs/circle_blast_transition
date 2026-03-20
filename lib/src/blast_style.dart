@@ -20,4 +20,8 @@ enum BlastStyle {
   /// Circles sweep diagonally from the top-left corner to the
   /// bottom-right corner.
   diagonal,
+
+  /// Circles sweep from the left of the screen to the right,
+  /// column by column.
+  leftToRight,
 }
